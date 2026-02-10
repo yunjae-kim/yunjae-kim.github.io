@@ -12,12 +12,23 @@
             padding: 0;
             box-sizing: border-box;
         }
+
+        html {
+            background-color: #1a1a1a;
+        }
+
+        .page-wrapper {
+            min-height: 100vh;
+            background: linear-gradient(to right, #1a1a1a 20%, #2a2a2a 20%, #2a2a2a 80%, #1a1a1a 80%);
+            display: flex;
+            flex-direction: column;
+        }
         
         body {
             font-family: 'Georgia', serif;
             line-height: 1.6;
             color: #e0e0e0;
-            background: linear-gradient(to right, #1a1a1a 20%, #2a2a2a 20%, #2a2a2a 80%, #1a1a1a 80%);
+            background: #1a1a1a;
             min-height: 100vh;
         }
         
@@ -43,9 +54,10 @@
         .main-container {
             display: flex;
             max-width: 1000px;
-            margin: -50px auto 0;
+            margin: 0 auto;
             position: relative;
             z-index: 2;
+            transform: translateY(-50px); /* Use transform instead of margin */
         }
 
         .side-nav {
@@ -182,6 +194,87 @@
             text-decoration: underline;
         }
 
+        .footer {
+            background-color: #1a1a1a;
+            color: #888888;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: auto; /* Pushes footer to bottom */
+            font-size: 14px;
+            border-top: 1px solid #333333;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer p {
+            margin: 0;
+            color: #888888;
+            font-size: 14px;
+        }
+
+        .resource-category {
+            margin-bottom: 35px;
+        }
+
+        .resource-category h3 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 22px;
+            padding-left: 10px;
+            border-left: 4px solid #666666;
+        }
+
+        .resource-list {
+            background-color: #333333;
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 10px;
+        }
+
+        .resource-title {
+            color: #ffffff;
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .resource-item {
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 2px solid #444444;
+        }
+
+        .resource-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .resource-item strong {
+            color: #cccccc;
+            display: inline-block;
+            width: 140px;
+            font-weight: 600;
+        }
+
+        .resource-link {
+            color: #aaaaaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .resource-link:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .resource-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 992px) {
             body {
                 background: #2a2a2a;
@@ -241,6 +334,7 @@
             <button class="nav-button active" data-section="home">Home</button>
             <button class="nav-button" data-section="research">Research</button>
             <button class="nav-button" data-section="experiences">Experiences</button>
+            <button class="nav-button" data-section="resources">Resources</button>
         </div>
         
         <div class="content-area">
@@ -345,8 +439,159 @@
                     <p>Prepare and serve nutritious meals while engaging in supportive conversations in a fast-paced shelter environment. Manage ingredient procurement and logistics for meal services at this downtown Vancouver drop-in ministry.</p>
                 </div>
             </section>
+
+            <section id="resources" class="content-section">
+                <h1>Study Resources</h1>
+                <p class="title">Materials I have used for self-study, highly recommended</p>
+                
+                <div class="resource-category">
+                    <h3>Mathematics</h3>
+                    
+                    <div class="resource-list">
+                        <div class="resource-title">Calculus I-III (AP Calculus AB/BC corresponds to I/II)</div>
+                        
+                        
+                        <div class="resource-item">
+                            <strong>Textbook:</strong> James Stewart, <em>Calculus: Early Transcendentals</em>
+                        </div>
+
+                        <div class="resource-item">
+                            <strong>Lectures:</strong> 
+                            <a href="https://www.youtube.com/playlist?list=PLF797E961509B4EB5" 
+                            target="_blank" class="resource-link">Professor Leonard</a>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <strong>Supplementary:</strong> 
+                            <a href="https://tutorial.math.lamar.edu/" 
+                            target="_blank" class="resource-link">Paul's Online Math Notes</a>
+                        </div>
+                    </div>
+
+                    <div class="resource-list">
+                        <div class="resource-title">Probability and Statistics (AP Statistics)</div>
+                        
+                        <div class="resource-item">
+                            <strong>Textbook:</strong> David Diez <i>et al</i>, <em>OpenIntro Statistics</em>
+                        </div>
+
+                        <div class="resource-item">
+                            <strong>Lectures:</strong> 
+                            <a href="https://www.youtube.com/playlist?list=PL5102DFDC6790F3D0" 
+                            target="_blank" class="resource-link">Professor Leonard</a>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="resource-list">
+                        <div class="resource-title">Linear Algebra</div>
+
+                        <div class="resource-item">
+                            <strong>Textbook:</strong> Howard Anton, <em>Elementary Linear Algebra</em>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <strong>Lectures:</strong> 
+                            <a href="https://www.youtube.com/playlist?list=PL6AU1UrGh9PUHmIeKdDFro9WCE2ktR2h-" 
+                            target="_blank" class="resource-link">Asher Roberts</a>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="resource-list">
+                        <div class="resource-title">Mathematics Beyond Linear Algebra</div>
+                        <p><em style="padding-bottom: 20px;">Differential Equations, Fourier Analysis, Complex Analysis, Calculus of Variations, etc.</em></p>
+                        
+                        <div class="resource-item">
+                            <strong>Textbook:</strong> Mary Boas, <em>Mathematical Methods in The Physical Sciences</em>
+                        </div>
+
+                        <div class="resource-item">
+                            <strong>Supplementary:</strong> Schaum's Outline for the topic you need extra practice in
+                        </div>
+                    </div>
+
+                </div>
+    
+                <div class="resource-category">
+                    <h3>Physics</h3>
+                    
+                    <div class="resource-list">
+                        <div class="resource-title">Introductory Physics (AP Physics C)</div>
+
+                        <p><em>Classical Mechanics, Thermodynamics, Electromagnetism, Quantum Mechanics</em></p>
+                        
+                        <div class="resource-item">
+                            <strong>Textbook:</strong> Young & Freedman, <em>University Physics with Modern Physics</em>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <strong>Lectures:</strong> 
+                            <a href="https://oyc.yale.edu/physics/phys-200" 
+                            target="_blank" class="resource-link">Yale Open Course</a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-list">
+                        <div class="resource-title">Thermodynamics & Statistical Mechanics</div>
+                        
+                        <div class="resource-item">
+                            <strong>Textbook:</strong> Daniel Schroeder, <em>An Introduction to Thermal Physics</em>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-category">
+                    <h3>Chemistry</h3>
+                </div>
+                <div class="resource-list">
+                        <div class="resource-title">General Chemistry (AP Chemistry)</div>
+                        
+                        <div class="resource-item">
+                            <strong>Textbook:</strong> Theodore Brown <i>et al</i>, <em>Chemistry: The Central Science</em>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <strong>Lectures:</strong> 
+                            <a href="https://www.youtube.com/playlist?list=PL8I5RNSPIfaaHDgCcK7BE5qt2MGNWDts-" 
+                            target="_blank" class="resource-link">Webster Science</a>
+                        </div>
+                </div>
+                
+                <div class="resource-list">
+                        <div class="resource-title">Physical Chemistry (Chemical Thermodynamics)</div>
+
+                        <div class="resource-item">
+                            <strong>Lectures:</strong> 
+                            <a href="https://www.youtube.com/playlist?list=PLYHaXvNA5Jrf_z0xbYhlzv0leoGBXHhll" 
+                            target="_blank" class="resource-link">Professor Derricotte</a>
+                        </div>                        
+
+                </div>
+
+                <div class="resource-category">
+                    <h3>Materials Science</h3>
+                    <div class="resource-list">
+                    <div class="resource-title">Introductory Materials Science</div>
+                        
+                    <div class="resource-item">
+                        <strong>Textbook:</strong> Callister, <em>Materials Science and Engineering: An Introduction</em>
+                    </div>
+                    </div>
+
+                </div>
+                
+            </section>
         </div>
     </div>
+
+    
+
+    <footer class="footer">
+    <div class="footer-content">
+        <p>&copy; 2026 Yunjae Kim</p>
+    </div>
+</footer>
     
     <script>
         document.querySelectorAll('.nav-button').forEach(button => {
@@ -370,7 +615,7 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             const hash = window.location.hash.substring(1);
-            if (hash && ['home', 'research', 'experiences'].includes(hash)) {
+            if (hash && ['home', 'research', 'experiences', 'resources'].includes(hash)) {
                 const button = document.querySelector(`[data-section="${hash}"]`);
                 if (button) button.click();
             }
