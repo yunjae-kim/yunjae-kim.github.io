@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Research Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: linear-gradient(to right, #1a1a1a 20%, #2a2a2a 20%, #2a2a2a 80%, #1a1a1a 80%);
+            min-height: 100vh;
+        }
+        
+        .header-image {
+            width: 100%;
+            height: 200px;
+            background-image: url('https://vinodsblog.com/wp-content/uploads/2023/06/Condensed-Matter-Physics.jpeg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .header-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+   
+        .main-container {
+            display: flex;
+            max-width: 1000px;
+            margin: -50px auto 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .side-nav {
+            width: 200px;
+            padding: 30px 20px;
+            background: #333333;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+        }
+        
+        .nav-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 10px;
+            text-align: left;
+            background: #404040;
+            border: none;
+            border-left: 4px solid transparent;
+            cursor: pointer;
+            font-size: 16px;
+            color: #cccccc;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+        
+        .nav-button:hover {
+            background: #4a4a4a;
+            color: #ffffff;
+        }
+        
+        .nav-button.active {
+            background: #555555;
+            color: white;
+            border-left: 4px solid #888888;
+        }
+        
+        .content-area {
+            flex: 1;
+            padding: 40px;
+            background: #2a2a2a;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            min-height: 600px;
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        h1 {
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-size: 32px;
+        }
+        
+        .title {
+            color: #aaaaaa;
+            font-size: 18px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 17px;
+            color: #dddddd;
+        }
+        
+        .research-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #444444;
+        }
+        
+        .research-item h3 {
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+        
+        .research-date {
+            color: #aaaaaa;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .experience-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #333333;
+            border-radius: 4px;
+            border-left: 3px solid #666666;
+        }
+        
+        .experience-item h3 {
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+        
+        .experience-date {
+            color: #aaaaaa;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        
+        .experience-item p {
+            margin-bottom: 5px;
+        }
+        
+        .experience-item strong {
+            color: #cccccc;
+        }
+        
+        .contact-links {
+            margin-top: 30px;
+        }
+
+        .contact-links a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-links a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 992px) {
+            body {
+                background: #2a2a2a;
+            }
+            
+            .main-container {
+                flex-direction: column;
+                margin: -30px auto 0;
+                max-width: 95%;
+            }
+            
+            .side-nav {
+                width: 100%;
+                padding: 20px;
+                box-shadow: none;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px;
+                background: #333333;
+            }
+            
+            .nav-button {
+                width: auto;
+                margin-bottom: 0;
+            }
+            
+            .header-image {
+                height: 150px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .content-area {
+                padding: 20px;
+            }
+            
+            .side-nav {
+                padding: 15px;
+            }
+            
+            .nav-button {
+                padding: 12px;
+                font-size: 14px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-image"></div>
+    <div class="main-container">
+        <div class="side-nav">
+            <button class="nav-button active" data-section="home">Home</button>
+            <button class="nav-button" data-section="research">Research</button>
+            <button class="nav-button" data-section="experiences">Experiences</button>
+        </div>
+        
+        <div class="content-area">
+            <section id="home" class="content-section active">
+                <h1>Yunjae Kim</h1>
+                <p class="title">11th Grade Student | North Vancouver, BC, Canada</p>
+                
+                <p>I'm an aspiring physics student interested in pursuing experimental condensed matter physics. Generally, I'm interested in the physics of solid materials and their applications.</p>
+                
+                <p>Currently a student at St. Thomas Aquinas Regional Secondary School, where I'm taking advanced physics and mathematics courses. I'm involved in science competitions, independent research projects, and volunteering initiatives in my community.</p>
+                
+                <p>Outside of physics, I'm interested in studying the philosophy and theology.</p>
+                
+                <div class="contact-links">
+                    Email: <a href="mailto:yunjaekim2009@gmail.com"> yunjaekim2009@gmail.com</a>
+                </div>
+            </section>
+            <section id="research" class="content-section">
+                <h1>Research & Projects</h1>
+                <p class="title">Current and past projects</p>
+                
+                <div class="research-item">
+                    <h3>Thermal Stability Analysis of MOSFETs at Cryogenic Temperatures</h3>
+                    <div class="research-date">Oct 2025- Present</div>
+                    <p> Analysing of temperature dependence in metal-oxide-semiconductor field-effect transistor (MOSFET) performance. When cooled below 298 K, the threshold voltage \(V_{th}\) increases due to Fermi level shift, while carrier mobility \(\mu\) improves from reduced phonon scattering. This creates a zero temperature coefficient (ZTC) bias point where the effects cancel, allowing thermally stable operation without external compensation.</p>
+                    <p>Mentor: Su Huyn Lee — School of Energy, British Columbia Institute of Technology.<br>
+                        Funding: Quantum Leaps Grant - SCWIST.</p>
+                </div>
+                
+                <div class="research-item">
+                    <h3>Effects of Anharmonicity on the Heat Capacity of Elemental Solids at High Temperatures</h3>
+                    <div class="research-date">Nov 2025 - Present</div>
+                    <p>Using classical statistical mechanics and pairwise potential via a Morse potential to model the deviation of heat capacity from the Dulong-Petit limit (\(C_v=3R\)) through a linear anharmonic correction in the form of \(C_v = 3R\mathcal{D}(T)(1 + AT) + \gamma T,\) where \(R\) is the gas constant, \(\mathcal{D}(T)\) is the Debye function, and \(\gamma\) is the Sommerfeld coefficient. Comparison with experimental data shows strong agreement (\(R^2>0.91\)) for several metals with predictions particularly accurate for face-centered cubic lattices.</p>
+                    <p>Mentor: Daniel Stedman — Depertment of Physics and Astronomy, University of British Columbia.</p>
+                </div>
+                
+                <div class="research-item">
+                    <h3>Modelling the Behaviour of Ideal Gases</h3>
+                    <div class="research-date">Dec 2024 - Jan 2025</div>
+                    <p>Small simulation project using Unity and C# to model ideal gas behavior under varying thermodynamic conditions. Used the ideal gas law (\(PV=nRT\)) and the Maxwell-Boltzmann distribution to replicate the random motion of particles. Created a visualization system showing particle dynamics and relationships between state variables.</p>
+                    <p>Collaborator: Christian Marrington — St. Thomas Aquinas Regional Secondary School.</p>
+                </div>
+            </section>
+            
+            <section id="experiences" class="content-section">
+                <h1>Experiences</h1>
+                <p class="title">Academic and extracurricular activities</p>
+
+                <div class="research-item">
+                    <h3>Phenomenal Physics Summer Camp Teaching Assistant</h3>
+                    <div class="experience-date">July 2025</div>
+                    <p><strong>University of British Columbia</strong></p>                    
+                    <p>Assisted UBC undergraduate leaders in facilitating daily hands-on physics activities for young campers. Managed logistics, maintained safe learning environments, and supervised campers during science demonstrations, lunch, and recreational activities.</p>
+                </div>
+
+                <div class="research-item">
+                    <h3>Founder & Cheif Editor</h3>
+                    <div class="experience-date">Sep 2025 - Present</div>
+                    <p><strong>STA Journal of Student Research</strong></p>
+                    <p>Founded the first academic journal at St. Thomas Aquinas Regional Secondary School. Designed, coded, and deployed the official website (journalsjsr.github.io) using HTML/CSS/JavaScript. Established editorial structure, submission guidelines, and peer review processes to ensure academic rigor.</p>
+                </div>
+
+                <div class="research-item">
+                    <h3>Founder & President</h3>
+                    <div class="experience-date">Sep 2024 - Present</div>
+                    <p><strong>STA Computer Science Club</strong></p>
+                    <p>Founded and currently lead the first computer science club at the school. Develop curriculum focused on Java fundamentals, mentor students for the Canadian Computing Competition, and manage all club logistics including scheduling, membership, and project coordination.</p>
+                </div>
+
+                <div class="research-item">
+                    <h3>Physics Captain</h3>
+                    <div class="experience-date">Oct 2025 - Nov 2025</div>
+                    <p><strong>Science Challenge Team</strong></p>
+                    <p>Served as physics captain for the school team participating in the Kwantlen Polytechnic University Science Challenge. Developed study materials and led preparatory sessions for team members.</p>
+                </div>
+
+                <div class="research-item">
+                    <h3> Physics Judge</h3>
+                    <div class="experience-date">Jan 2025</div>
+                    <p><strong>Annual STA Science Fair</strong></p>
+                    <p>Selected by the Science Department to evaluate physics category projects based on experimental design, data analysis, and presentation clarity. Assessed and scored multiple student projects during formal interviews.</p>
+                </div>
+
+                <div class="research-item">
+                    <h3>Emergency Medical Responder Certification</h3>
+                    <div class="experience-date">Aug 2025</div>
+                    <p><strong>Saint John Ambulance</strong></p>
+                    <p>Completed intensive two-week Emergency Medical Responder (EMR) training, mastering entry-level paramedic skills including patient assessment, vital sign monitoring, hemorrhage control, spinal motion restriction, and medication administration.</p>
+                </div>
+
+                <div class="research-item">
+                    <h3>Teen Advisory Council Member</h3>
+                    <div class="experience-date">Jan 2023 - Present</div>
+                    <p><strong>North Vancouver City Library</strong></p>
+                    <p>Represent the teen demographic in library governance, advising on services and programming. Manage the annual teen zine publication process, coordinate library events including the Teen Summer Writing Contest, and served as Master of Ceremonies for the 2024 awards ceremony.</p>
+                </div>
+
+                <div class="research-item">
+                    <h3>Volunteer</h3>
+                    <div class="experience-date">Sep 2022 - Present</div>
+                    <p><strong>The Door Is Open Drop-In Ministry & Shelter Services</strong></p>
+                    <p>Prepare and serve nutritious meals while engaging in supportive conversations in a fast-paced shelter environment. Manage ingredient procurement and logistics for meal services at this downtown Vancouver drop-in ministry.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <script>
+        document.querySelectorAll('.nav-button').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.nav-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                button.classList.add('active');
+                
+                const sectionId = button.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+                
+                window.history.pushState(null, '', `#${sectionId}`);
+            });
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.substring(1);
+            if (hash && ['home', 'research', 'experiences'].includes(hash)) {
+                const button = document.querySelector(`[data-section="${hash}"]`);
+                if (button) button.click();
+            }
+        });
+    </script>
+</body>
+</html>
