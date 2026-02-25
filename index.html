@@ -281,6 +281,53 @@
             border: 1px solid #444444;
         }
 
+        .design-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+    }
+
+    .design-item {
+        background-color: #333333;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+        border: 1px solid #444444;
+    }
+
+    .design-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        border-color: #666666;
+    }
+
+    .design-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        display: block;
+        border-bottom: 1px solid #444444;
+    }
+
+    .design-caption {
+        padding: 15px;
+        text-align: center;
+    }
+
+    .design-caption h3 {
+        color: #ffffff;
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .design-caption p {
+        color: #aaaaaa;
+        font-size: 14px;
+        margin: 0;
+        font-style: italic;
+    }
+
         @media (max-width: 768px) {
             .resource-list {
                 grid-template-columns: 1fr;
@@ -346,6 +393,7 @@
             <button class="nav-button active" data-section="home">Home</button>
             <button class="nav-button" data-section="research">Research</button>
             <button class="nav-button" data-section="experiences">Experiences</button>
+            <button class="nav-button" data-section="design">Renders</button>
             <button class="nav-button" data-section="resources">Resources</button>
         </div>
         
@@ -468,6 +516,38 @@
                     <p>Help prepare and serve hundreds of nutritious meals while engaging in supportive conversations in a fast-paced shelter environment. Manage ingredient procurement and logistics for meal services at this downtown Vancouver drop-in ministry.</p>
                 </div>
             </section>
+
+        <section id="design" class="content-section">
+        <h1>3D Design Portfolio</h1>
+        <p class="title">Renders made with Blender and Photoshop</p>
+        
+        <div class="design-gallery">
+            <div class="design-item">
+                <img src="https://i.ibb.co/jCTh8dF/unnamed.png" 
+                    alt="Design Render 1" 
+                    class="design-image">
+                <div class="design-caption">
+                </div>
+            </div>
+            
+            <div class="design-item">
+                <img src="https://i.ibb.co/67Bj7Dj2/unnamed-1.png" 
+                    alt="Design Render 2" 
+                    class="design-image">
+                <div class="design-caption">
+                </div>
+            </div>
+            
+            <div class="design-item">
+                <img src="https://i.ibb.co/FbT3kg57/unnamed-2.png" 
+                    alt="Design Render 3" 
+                    class="design-image">
+                <div class="design-caption">
+
+                </div>
+            </div>
+        </div>
+    </section>
 
             <section id="resources" class="content-section">
                 <h1>Study Resources</h1>
