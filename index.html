@@ -327,6 +327,28 @@
         margin: 0;
         font-style: italic;
     }
+    .academics-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.academics-table th,
+.academics-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #444444;
+}
+
+.academics-table th {
+    color: #cccccc;
+    font-weight: 600;
+}
+
+.academics-table td {
+    color: #dddddd;
+}
+
 
         @media (max-width: 768px) {
             .resource-list {
@@ -393,6 +415,7 @@
             <button class="nav-button active" data-section="home">Home</button>
             <button class="nav-button" data-section="research">Research</button>
             <button class="nav-button" data-section="experiences">Experiences</button>
+            <button class="nav-button" data-section="academics">Academics</button>
             <button class="nav-button" data-section="resources">Resources</button>
         </div>
         
@@ -456,11 +479,18 @@
             
             <section id="experiences" class="content-section">
                 <h1>Experiences</h1>
-                <p class="title">Academic and extracurricular activities</p>
+                <p class="title">Extracurricular activities</p>
+
+                <div class="research-item">
+                    <h3>Rise Up Award</h3>
+                    <div class="experience-date">Apr 2025</div>
+                    <p><strong>City of North Vancouver</strong></p>
+                    <p>Awarded by the City of North Vancouver in recognition of the personal growth made by years of community service through the North Vancouver City Library</p>
+                </div>
 
                 <div class="research-item">
                     <h3>Phenomenal Physics Summer Camp Teaching Assistant</h3>
-                    <div class="experience-date">July 2025</div>
+                    <div class="experience-date">Jul 2025</div>
                     <p><strong>University of British Columbia</strong></p>                    
                     <p>Assisted UBC undergraduate leaders in facilitating daily hands-on physics activities for young campers. Managed logistics, maintained safe learning environments, and supervised campers during science demonstrations, lunch, and recreational activities.</p>
                 </div>
@@ -514,6 +544,96 @@
                     <p>Help prepare and serve hundreds of nutritious meals while engaging in supportive conversations in a fast-paced shelter environment. Manage ingredient procurement and logistics for meal services at this downtown Vancouver drop-in ministry.</p>
                 </div>
             </section>
+
+            <section id="academics" class="content-section">
+            <h1>Academics</h1>
+            <p class="title">Advanced coursework and exams</p>
+
+            <div class="research-item">
+                <h3>Standardized Testing</h3>
+                <p><strong>SAT:</strong> 1550 (Reading & Writing: 750, Math: 800)</p>
+            </div>
+
+            <div class="research-item">
+                <h3>Advanced Placement (AP)</h3>
+
+                <table class="academics-table">
+                    <tr>
+                        <th>Course</th>
+                        <th>Year</th>
+                        <th>Grade</th>
+                        <th>Score</th>
+                    </tr>
+                    <tr>
+                        <td>AP Computer Science</td>
+                        <td>2024</td>
+                        <td>9</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>AP World History: Modern</td>
+                        <td>2024</td>
+                        <td>9</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>AP Physics 1: Algebra-Based</td>
+                        <td>2025</td>
+                        <td>10</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>AP Statistics</td>
+                        <td>2025</td>
+                        <td>10</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>AP Psychology</td>
+                        <td>2025</td>
+                        <td>10</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>AP Calculus BC</td>
+                        <td>2026</td>
+                        <td>11</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>AP Physics C: Mechanics</td>
+                        <td>2026</td>
+                        <td>11</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>AP Physics C: Electricity and Magnetism</td>
+                        <td>2026</td>
+                        <td>11</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>AP Physics 2: Algebra Based</td>
+                        <td>2026</td>
+                        <td>11</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>AP Physics Chemistry</td>
+                        <td>2026</td>
+                        <td>11</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>AP Physics English Language and Composition</td>
+                        <td>2026</td>
+                        <td>11</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
 
             <section id="resources" class="content-section">
                 <h1>Study Resources</h1>
