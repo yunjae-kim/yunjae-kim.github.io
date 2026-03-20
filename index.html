@@ -417,7 +417,7 @@
             <button class="nav-button" data-section="experiences">Experiences</button>
             <button class="nav-button" data-section="academics">Academics</button>
             <button class="nav-button" data-section="resources">Resources</button>
-            <button class="nav-button" data-section="notes">Notes</button>
+            <button class="nav-button" data-section="integrals">Daily Integrals</button>
         </div>
         
         <div class="content-area">
@@ -792,21 +792,11 @@
                 
             </section>
 
-            <section id="notes" class="content-section">
-        <h1>Short Notes</h1>
-        <p class="title">Random derivations and explorations</p>
+            <section id="integrals" class="content-section">
+        <h1>Daily Integrals</h1>
+        <p class="title">Daily solutions for integrals from <a href="https://dailyintegral.com"target="_blank" class="resource-link">Daily Integral</a></p>
 
-        <div class="research-item">
-            <h3>Rotational Inertias of Rigid Bodies</h3>
-            <p>
-                Derivations for rotational inertia of common rigid bodies, specifically thin rings, rods, cylinders, and spheres using integral calculus.
-            </p>
-            <p>
-                <a href="Rotational_Inertias_of_Rigid_Bodies.pdf" target="_blank" class="resource-link">
-                    View PDF
-                </a>
-            </p>
-        </div>
+        <div id="integrals-app"></div>
 
     </section>
         </div>
@@ -848,5 +838,95 @@
             }
         });
     </script>
+
+    <script>
+let integralsData = {};
+let currentYear = null;
+let currentMonth = null;
+
+function loadIntegrals() {
+  fetch('index.json')
+    .then(res => res.json())
+    .then(data => {
+      integralsData = data;
+      renderYears();
+    })
+    .catch(err => {
+      document.getElementById('integrals-app').innerHTML =
+        "<p>Failed to load solutions.</p>";
+    });
+}
+
+function renderYears() {
+  const app = document.getElementById('integrals-app');
+  app.innerHTML = "<h2>Select Year</h2>";
+
+  Object.keys(integralsData)
+    .sort((a,b) => b - a)
+    .forEach(year => {
+      const btn = document.createElement('button');
+      btn.className = "nav-button";
+      btn.textContent = year;
+
+      btn.onclick = () => {
+        currentYear = year;
+        renderMonths();
+      };
+
+      app.appendChild(btn);
+    });
+}
+
+function renderMonths() {
+  const app = document.getElementById('integrals-app');
+
+  app.innerHTML = `
+    <div class="back" onclick="renderYears()">← Back</div>
+    <h2>${currentYear}</h2>
+  `;
+
+  Object.keys(integralsData[currentYear])
+    .sort()
+    .forEach(month => {
+      const btn = document.createElement('button');
+      btn.className = "nav-button";
+      btn.textContent = month;
+
+      btn.onclick = () => {
+        currentMonth = month;
+        renderDays();
+      };
+
+      app.appendChild(btn);
+    });
+}
+
+function renderDays() {
+  const app = document.getElementById('integrals-app');
+
+  app.innerHTML = `
+    <div class="back" onclick="renderMonths()">← Back</div>
+    <h2>${currentYear}-${currentMonth}</h2>
+  `;
+
+  integralsData[currentYear][currentMonth]
+    .sort()
+    .forEach(file => {
+      const link = document.createElement('a');
+
+      link.href = `IntSolutions/${currentYear}/${currentMonth}/${file}`;
+      link.textContent = file.replace('.pdf', '');
+      link.target = "_blank";
+
+      app.appendChild(link);
+    });
+}
+
+document.querySelector('[data-section="integrals"]').addEventListener('click', () => {
+  if (Object.keys(integralsData).length === 0) {
+    loadIntegrals();
+  }
+});
+</script>
 </body>
 </html>
