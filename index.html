@@ -858,80 +858,81 @@ function loadIntegrals() {
 }
 
 function renderYears() {
-  const app = document.getElementById('integrals-app');
-
   currentYear = null;
   currentMonth = null;
 
-  app.innerHTML = "<h2>Select Year</h2>";
+  const app = document.getElementById('integrals-app');
+  app.innerHTML = "";
+
+  const title = document.createElement("h2");
+  title.textContent = "Select Year";
+  app.appendChild(title);
 
   Object.keys(integralsData)
-    .sort((a,b) => b - a)
+    .sort((a, b) => b - a) // newest year first
     .forEach(year => {
       const btn = document.createElement('button');
       btn.className = "nav-button";
       btn.textContent = year;
-
       btn.onclick = () => {
         currentYear = year;
         renderMonths();
       };
-
       app.appendChild(btn);
     });
 }
 
 function renderMonths() {
+  currentMonth = null;
   const app = document.getElementById('integrals-app');
+  app.innerHTML = "";
 
-app.innerHTML = "";
+  const back = document.createElement("div");
+  back.textContent = "← Back";
+  back.className = "back";
+  back.onclick = renderYears;
+  app.appendChild(back);
 
-const back = document.createElement("div");
-back.textContent = "← Back";
-back.className = "back";
-back.onclick = renderYears;
-
-const title = document.createElement("h2");
-title.textContent = currentYear;
-
-app.appendChild(back);
-app.appendChild(title);
+  const title = document.createElement("h2");
+  title.textContent = currentYear;
+  app.appendChild(title);
 
   Object.keys(integralsData[currentYear])
-    .sort((a, b) => b.localeCompare(a))
-    
+    .sort((a, b) => b.localeCompare(a)) // newest month first
     .forEach(month => {
       const btn = document.createElement('button');
       btn.className = "nav-button";
       btn.textContent = month;
-
       btn.onclick = () => {
         currentMonth = month;
         renderDays();
       };
-
       app.appendChild(btn);
     });
 }
 
 function renderDays() {
   const app = document.getElementById('integrals-app');
+  app.innerHTML = "";
 
-  app.innerHTML = `
-    <div class="back" onclick="renderMonths()">← Back</div>
-    <h2>${currentYear}-${currentMonth}</h2>
-  `;
+  const back = document.createElement("div");
+  back.textContent = "← Back";
+  back.className = "back";
+  back.onclick = renderMonths;
+  app.appendChild(back);
+
+  const title = document.createElement("h2");
+  title.textContent = `${currentYear}-${currentMonth}`;
+  app.appendChild(title);
 
   integralsData[currentYear][currentMonth]
-    .sort((a, b) => b.localeCompare(a))
+    .sort((a, b) => b.localeCompare(a)) // newest file first
     .forEach(file => {
       const link = document.createElement('a');
-        link.className = "resource-link";
-
       link.href = `IntSolutions/${currentYear}/${currentMonth}/${file}`;
       link.textContent = file.replace('.pdf', '');
       link.target = "_blank";
-
+      link.className = "resource-link";
       app.appendChild(link);
     });
 }
