@@ -860,6 +860,11 @@ function loadIntegrals() {
 function renderYears() {
   const app = document.getElementById('integrals-app');
 
+  currentYear = null;
+  currentMonth = null;
+
+  app.innerHTML = "<h2>Select Year</h2>";
+
   Object.keys(integralsData)
     .sort((a,b) => b - a)
     .forEach(year => {
@@ -879,10 +884,18 @@ function renderYears() {
 function renderMonths() {
   const app = document.getElementById('integrals-app');
 
-  app.innerHTML = `
-    <div class="back" onclick="renderYears()">← Back</div>
-    <h2>${currentYear}</h2>
-  `;
+app.innerHTML = "";
+
+const back = document.createElement("div");
+back.textContent = "← Back";
+back.className = "back";
+back.onclick = renderYears;
+
+const title = document.createElement("h2");
+title.textContent = currentYear;
+
+app.appendChild(back);
+app.appendChild(title);
 
   Object.keys(integralsData[currentYear])
     .sort((a, b) => b.localeCompare(a))
