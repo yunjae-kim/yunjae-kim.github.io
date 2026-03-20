@@ -865,11 +865,10 @@ function renderYears() {
   app.innerHTML = "";
 
   const title = document.createElement("h2");
-  title.textContent = "Select Year";
   app.appendChild(title);
 
   Object.keys(integralsData)
-    .sort((a, b) => b - a) // newest year first
+    .sort((a, b) => b - a)
     .forEach(year => {
       const btn = document.createElement('button');
       btn.className = "nav-button";
@@ -898,7 +897,7 @@ function renderMonths() {
   app.appendChild(title);
 
   Object.keys(integralsData[currentYear])
-    .sort((a, b) => b.localeCompare(a)) // newest month first
+    .sort((a, b) => b.localeCompare(a))
     .forEach(month => {
       const btn = document.createElement('button');
       btn.className = "nav-button";
@@ -926,7 +925,7 @@ function renderDays() {
   app.appendChild(title);
 
   integralsData[currentYear][currentMonth]
-    .sort((a, b) => b.localeCompare(a)) // newest file first
+    .sort((a, b) => b.localeCompare(a)) 
     .forEach(file => {
       const link = document.createElement('a');
       link.href = `IntSolutions/${currentYear}/${currentMonth}/${file}`;
