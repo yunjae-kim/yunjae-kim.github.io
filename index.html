@@ -885,7 +885,8 @@ function renderMonths() {
   `;
 
   Object.keys(integralsData[currentYear])
-    .sort()
+    .sort((a, b) => b.localeCompare(a))
+    
     .forEach(month => {
       const btn = document.createElement('button');
       btn.className = "nav-button";
@@ -909,7 +910,7 @@ function renderDays() {
   `;
 
   integralsData[currentYear][currentMonth]
-    .sort()
+    .sort((a, b) => b.localeCompare(a))
     .forEach(file => {
       const link = document.createElement('a');
         link.className = "resource-link";
