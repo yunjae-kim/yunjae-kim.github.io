@@ -913,6 +913,7 @@ function renderDays() {
     .sort()
     .forEach(file => {
       const link = document.createElement('a');
+        link.className = "resource-link";
 
       link.href = `IntSolutions/${currentYear}/${currentMonth}/${file}`;
       link.textContent = file.replace('.pdf', '');
