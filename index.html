@@ -350,6 +350,19 @@
     color: #dddddd;
 }
 
+.integral-link {
+    display: block;
+    color: #aaaaaa;
+    text-decoration: none;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.integral-link:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
 
         @media (max-width: 768px) {
             .resource-list {
@@ -932,7 +945,7 @@ function renderDays() {
       link.href = `IntSolutions/${currentYear}/${currentMonth}/${file}`;
       link.textContent = file.replace('.pdf', '');
       link.target = "_blank";
-      link.className = "resource-link";
+      link.className = "integral-link";
       app.appendChild(link);
     });
 }
