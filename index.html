@@ -58,7 +58,7 @@
             margin: 0 auto;
             position: relative;
             z-index: 2;
-            transform: translateY(-50px); /* Use transform instead of margin */
+            transform: translateY(-50px);
         }
 
         .side-nav {
@@ -200,7 +200,7 @@
             color: #888888;
             text-align: center;
             padding: 25px 20px;
-            margin-top: auto; /* Pushes footer to bottom */
+            margin-top: auto;
             font-size: 14px;
             border-top: 1px solid #333333;
         }
@@ -311,10 +311,10 @@
             border-radius: 4px;
         }
 
-        .latest-update h3 {
+        .latest-update h4 {
             color: #ffffff;
             margin-bottom: 8px;
-            font-size: 20px;
+            font-size: 16px;
         }
 
         .update-date {
@@ -330,10 +330,18 @@
 
         .subsection-title {
             color: #ffffff;
-            margin: 45px 0 30px 0; /* more bottom spacing */
+            margin: 45px 0 30px 0;
             font-size: 24px;
             border-bottom: 1px solid #444444;
             padding-bottom: 8px;
+        }
+
+        .course-list-items {
+            margin-left: 0;
+            padding-left: 20px;
+            margin-top: 10px;
+            color: #dddddd;
+            list-style-position: inside;
         }
 
 
@@ -464,6 +472,7 @@
                     <div class="research-date">Dec 2025 - Feb 2026</div>
                     <p>The basic VSEPR molecular geometries are derived by treating electron domains as identical repelling charges constrained to a sphere. In order to minimize the total Coulombic repulsion under the constraint, Lagrange multipliers and the Gram matrix are used to show that the minimum-energy configurations for \(N=2,3,4\) are linear, trigonal planar, and tetrahedral.</p>
                     <p>ChemRxiv: <a href="https://doi.org/10.26434/chemrxiv.15000129/v1"  target="_blank" class="resource-link">doi.org/10.26434/chemrxiv.15000129/v1</a></p>
+                    <p>Sent back for resubmission after revision at the Chemical Educator</p>
                 </div>
 
                 <div class="research-item">
@@ -487,14 +496,15 @@
                     <h3>Founder & Chief Editor</h3>
                     <div class="experience-date">Sep 2025 - Present</div>
                     <p><strong>STA Journal of Student Research</strong></p>
-                    <p>Founded the first academic journal at St. Thomas Aquinas Regional Secondary School. Designed, coded, and deployed the official website using HTML/CSS/JavaScript. Established editorial structure, submission guidelines, and peer review processes to ensure academic rigor.</p>
+                    <p>Founded the first academic journal at St. Thomas Aquinas Regional Secondary School. Designed, coded, and deployed the official website using HTML/CSS/JavaScript. Established editorial structure, submission guidelines, and peer review processes to ensure academic rigor. Published 2 manuscripts for the first issue.</p>
                 </div>
+
 
                 <div class="research-item">
                     <h3>Founder & President</h3>
                     <div class="experience-date">Sep 2024 - Present</div>
                     <p><strong>STA Computer Science Club</strong></p>
-                    <p>Founded and currently lead the first computer science club at the school. Develop curriculum focused on Java fundamentals, mentor students for the Canadian Computing Competition, and manage all club logistics including scheduling, membership, and project coordination.</p>
+                    <p>Founded and currently lead the first computer science club at the school. Develop curriculum focused on Java fundamentals, mentor students for the Canadian Computing Competition (CCC), and manage all club logistics including scheduling, membership, and project coordination. Taught 15 students in the club with 4 students participating in the CCC.</p>
                 </div>
 
                 <div class="research-item">
@@ -512,6 +522,13 @@
                     <div class="experience-date">Jan 2023 - Present</div>
                     <p><strong>North Vancouver City Library</strong></p>
                     <p>Represent the teen demographic in library governance, advising on services and programming. Manage the annual teen zine publication process, coordinate library events including the Teen Summer Writing Contest, and served as Master of Ceremonies for the 2024 awards ceremony.</p>
+                </div>
+
+                <div class="research-item">
+                    <h3>Peer Tutoring</h3>
+                    <div class="experience-date">Sep 2024 - Present</div>
+                    <p><strong>Independatly at School</strong></p>
+                    <p>Providing peer tutoring to various students in the school, espcially in mathematics, physics, and chemistry. Alwaying aiming to provide a deep, conceptual understanding of the topics so that the student will be able to apply them in any classroom material.</p>
                 </div>
 
                 <div class="research-item">
@@ -543,6 +560,21 @@
                 </div>
 
                 <h2 class="subsection-title">Certifications</h2>
+
+                <div class="research-item">
+                    <h3>An Introduction To the Summa Theologiae (Aquinas 101)</h3>
+                    <div class="experience-date">May 2026</div>
+                    <p><strong>Thomistic Institute</strong></p>
+                    <p>Explored classical Aristotelian & Thomistic philosophy and theology through lessons and reading various parts of the Summa Theologiae and completed the following squences of courses as part of the Aquinas 101 program and recieved certificates of completion:</p>
+                    <ul class="course-list-items">
+                        <li>Introduction to St. Thomas Aquinas</li>
+                        <li>How to Think Like a Thomist: An Introduction to Thomistic Principles</li>
+                        <li>Who is God? How Can We Know Him?</li>
+                        <li>Creation, Providence, and Evil</li>
+                        <li>Angels, Demons, and Man</li>
+                        <li>Happiness and Human Action</li>
+                    </ul>
+                </div>
 
                 <div class="research-item">
                     <h3>Python for Data Science, AI & Development</h3>
@@ -873,6 +905,12 @@
                 document.getElementById(sectionId).classList.add('active');
                 
                 window.history.pushState(null, '', `#${sectionId}`);
+
+                window.addEventListener('popstate', () => {
+                    const hash = window.location.hash.substring(1) || 'home';
+                    const button = document.querySelector(`[data-section="${hash}"]`);
+                    if (button) button.click();
+                });
             });
         });
 
