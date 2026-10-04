@@ -5,399 +5,295 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="tYLJI1P1L3sHb3zufu_xwj1ok6S8JOUdhwfJ3cAZbK8" />
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <title>Yunjae Kim</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Yunjae Kim | Physics Researcher</title>
     <style>
+        :root {
+            --bg-base: #050608;
+            --bg-sidebar: #101217;
+            --bg-content: #15181e;
+            --border-color: #242933;
+            --text-main: #9ca3af;
+            --text-heading: #f3f4f6;
+            --accent: #d1d5db;
+            --accent-hover: #ffffff;
+            
+            --btn-default: transparent;
+            --btn-hover: rgba(255, 255, 255, 0.03);
+            --btn-active-bg: rgba(255, 255, 255, 0.08);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            background-color: #1a1a1a;
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            color: var(--text-main);
+            background: var(--bg-base);
+            min-height: 100vh;
+        }
+        
+        h1, h2, h3, .heading-font {
+            font-family: 'Georgia', serif;
+            color: var(--text-heading);
+            font-weight: normal;
         }
 
-        .page-wrapper {
-            min-height: 100vh;
-            background: linear-gradient(to right, #1a1a1a 20%, #2a2a2a 20%, #2a2a2a 80%, #1a1a1a 80%);
-            display: flex;
-            flex-direction: column;
-        }
-        
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: #e0e0e0;
-            background: #1a1a1a;
-            min-height: 100vh;
-        }
-        
         .header-image {
             width: 100%;
-            height: 200px;
-            background-image: url('https://vinodsblog.com/wp-content/uploads/2023/06/Condensed-Matter-Physics.jpeg');
+            height: 240px;
+            /* Update this URL with a plot/MD simulation frame */
+            background-image: linear-gradient(rgba(5, 6, 8, 0.4), rgba(5, 6, 8, 1)), url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
-            position: relative;
-        }
-        
-        .header-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
         }
    
         .main-container {
             display: flex;
-            max-width: 1000px;
+            max-width: 1050px;
             margin: 0 auto;
-            position: relative;
-            z-index: 2;
-            transform: translateY(-50px);
+            transform: translateY(-80px);
+            background: var(--bg-content);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            overflow: hidden;
         }
 
         .side-nav {
-            width: 200px;
-            padding: 30px 20px;
-            background: #333333;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+            width: 240px;
+            min-width: 240px;
+            padding: 30px 15px 30px 0;
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
         }
         
         .nav-button {
             display: block;
             width: 100%;
-            padding: 15px;
-            margin-bottom: 10px;
+            padding: 12px 15px 12px 20px;
+            margin-bottom: 8px;
             text-align: left;
-            background: #404040;
+            background: var(--btn-default);
             border: none;
             border-left: 4px solid transparent;
+            border-radius: 0 6px 6px 0;
             cursor: pointer;
-            font-size: 16px;
-            color: #cccccc;
-            transition: all 0.3s;
-            border-radius: 2px;
+            font-size: 15px;
+            font-weight: 400;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
         }
         
         .nav-button:hover {
-            background: #4a4a4a;
-            color: #ffffff;
+            background: var(--btn-hover);
+            color: var(--accent-hover);
         }
         
         .nav-button.active {
-            background: #555555;
-            color: white;
-            border-left: 4px solid #888888;
+            background: var(--btn-active-bg);
+            color: var(--text-heading);
+            font-weight: 600;
+            border-left: 4px solid var(--text-heading); 
         }
         
         .content-area {
             flex: 1;
-            padding: 40px;
-            background: #2a2a2a;
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            padding: 45px 50px;
+            background: var(--bg-content);
             min-height: 600px;
         }
         
         .content-section {
             display: none;
+            animation: fadeIn 0.4s ease;
         }
         
         .content-section.active {
             display: block;
-            animation: fadeIn 0.5s;
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         h1 {
-            margin-bottom: 15px;
-            color: #ffffff;
-            font-size: 32px;
+            font-size: 36px;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .social-icons {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: 15px;
+        }
+        
+        .social-icons img {
+            height: 24px;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+            filter: grayscale(20%);
+        }
+
+        .social-icons img:hover {
+            opacity: 1;
+            filter: grayscale(0%);
         }
         
         .title {
-            color: #aaaaaa;
-            font-size: 18px;
             margin-bottom: 30px;
-            font-style: italic;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .status {
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
         }
         
         p {
             margin-bottom: 20px;
-            font-size: 17px;
-            color: #dddddd;
-        }
-        
-        .research-item {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #444444;
-        }
-        
-        .research-item h3 {
-            color: #ffffff;
-            margin-bottom: 8px;
-        }
-        
-        .research-date {
-            color: #aaaaaa;
             font-size: 15px;
-            margin-bottom: 10px;
-        }
-        
-        .experience-item {
-            margin-bottom: 25px;
-            padding: 20px;
-            background: #333333;
-            border-radius: 4px;
-            border-left: 3px solid #666666;
-        }
-        
-        .experience-item h3 {
-            color: #ffffff;
-            margin-bottom: 8px;
-        }
-        
-        .experience-date {
-            color: #aaaaaa;
-            font-size: 15px;
-            margin-bottom: 8px;
-        }
-        
-        .experience-item p {
-            margin-bottom: 5px;
-        }
-        
-        .experience-item strong {
-            color: #cccccc;
-        }
-        
-        .contact-links {
-            margin-top: 30px;
         }
 
-        .contact-links a {
-            color: #cccccc;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .contact-links a:hover {
-            color: #ffffff;
-            text-decoration: underline;
-        }
-
-        .footer {
-            background-color: #1a1a1a;
-            color: #888888;
-            text-align: center;
-            padding: 25px 20px;
-            margin-top: auto;
-            font-size: 14px;
-            border-top: 1px solid #333333;
-        }
-
-        .footer-content {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .footer p {
-            margin: 0;
-            color: #888888;
-            font-size: 14px;
-        }
-
-        .resource-category {
+        .btn-cv {
+            display: inline-block;
+            margin-top: 10px;
             margin-bottom: 35px;
+            padding: 10px 20px;
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 4px;
+            transition: all 0.2s;
         }
 
-        .resource-category h3 {
-            color: #ffffff;
-            margin-bottom: 15px;
-            font-size: 22px;
-            padding-left: 10px;
-            border-left: 4px solid #666666;
+        .btn-cv:hover {
+            background: var(--text-heading);
+            color: var(--bg-base);
+            border-color: var(--text-heading);
+        }
+        
+        .list-item-block {
+            margin-bottom: 35px;
+            position: relative;
         }
 
-        .resource-list {
-            background-color: #333333;
-            border-radius: 6px;
-            padding: 25px;
-            margin-bottom: 10px;
-        }
-
-        .resource-title {
-            color: #ffffff;
-            font-size: 18px;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .resource-item {
-            margin-bottom: 20px;
-            padding-left: 15px;
-            border-left: 2px solid #444444;
-        }
-
-        .resource-item:last-child {
+        .list-item-block:last-child {
             margin-bottom: 0;
         }
-
-        .resource-item strong {
-            color: #cccccc;
+        
+        .list-item-block h3 {
+            font-size: 19px;
+            margin-bottom: 4px;
+        }
+        
+        .meta-info {
+            color: #717c8c;
+            font-size: 13.5px;
+            margin-bottom: 12px;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+        }
+        
+        .list-item-block strong {
+            color: var(--accent-hover);
             font-weight: 600;
         }
-
-        .resource-link {
-            color: #aaaaaa;
+        
+        a {
+            color: var(--accent);
             text-decoration: none;
-            transition: color 0.3s;
+            border-bottom: 1px dotted #555;
+            transition: all 0.2s;
         }
 
-        .resource-link:hover {
-            color: #ffffff;
-            text-decoration: underline;
+        a:hover {
+            color: var(--accent-hover);
+            border-bottom: 1px solid var(--accent-hover);
         }
 
-        .project-image {
-            margin: 20px 0;
-            text-align: center;
+        .subsection-title {
+            margin: 45px 0 25px 0;
+            font-size: 22px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
         }
 
-        .project-image img {
-            max-width: 80%;
-            max-height: 400px;
-            height: auto;
-            border-radius: 6px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid #444444;
+        ul.bullet-list {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            font-size: 15px;
         }
 
-        .academics-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }  
-
-        .academics-table th,
-        .academics-table td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #444444;
-        }
-
-        .academics-table th {
-            color: #cccccc;
-            font-weight: 600;
-        }
-
-        .academics-table td {
-            color: #dddddd;
-        }
-        .latest-update {
-            margin-top: 35px;
-            padding: 18px 22px;
-            background: #333333;
-            border-left: 4px solid #777777;
-            border-radius: 4px;
-        }
-
-        .latest-update h4 {
-            color: #ffffff;
+        ul.bullet-list li {
             margin-bottom: 8px;
-            font-size: 16px;
         }
 
-        .update-date {
-            color: #aaaaaa;
-            font-size: 14px;
-            margin-bottom: 10px;
-            font-style: italic;
+        .latest-update {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.015);
+            border-left: 3px solid var(--border-color);
+            border-radius: 4px;
         }
 
         .latest-update p {
             margin-bottom: 0;
+            font-size: 14px;
         }
 
-        .subsection-title {
-            color: #ffffff;
-            margin: 45px 0 30px 0;
-            font-size: 24px;
-            border-bottom: 1px solid #444444;
-            padding-bottom: 8px;
-        }
-
-        .course-list-items {
-            margin-left: 0;
-            padding-left: 20px;
-            margin-top: 10px;
-            color: #dddddd;
-            list-style-position: inside;
-        }
-
-
-        @media (max-width: 768px) {
-            .resource-list {
-                grid-template-columns: 1fr;
-            }
+        .footer {
+            text-align: center;
+            padding: 20px 20px 50px 20px;
+            font-size: 13px;
+            color: #555;
         }
 
         @media (max-width: 992px) {
-            body {
-                background: #2a2a2a;
-            }
-            
             .main-container {
                 flex-direction: column;
-                margin: -30px auto 0;
-                max-width: 95%;
+                transform: translateY(-40px);
+                margin: 0 15px;
             }
             
             .side-nav {
                 width: 100%;
-                padding: 20px;
-                box-shadow: none;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
                 display: flex;
-                justify-content: center;
                 flex-wrap: wrap;
-                gap: 10px;
-                background: #333333;
+                gap: 8px;
+                padding: 20px;
             }
             
             .nav-button {
                 width: auto;
                 margin-bottom: 0;
+                padding: 8px 16px;
+                border-radius: 4px;
+                border-left: none;
+                border-bottom: 2px solid transparent;
             }
             
-            .header-image {
-                height: 150px;
+            .nav-button.active {
+                border-left: none;
+                border-bottom: 2px solid var(--text-heading);
             }
-        }
-        
-        @media (max-width: 576px) {
+            
             .content-area {
-                padding: 20px;
-            }
-            
-            .side-nav {
-                padding: 15px;
-            }
-            
-            .nav-button {
-                padding: 12px;
-                font-size: 14px;
-            }
-            
-            h1 {
-                font-size: 28px;
+                padding: 30px 25px;
             }
         }
     </style>
@@ -405,615 +301,158 @@
 <body>
     <div class="header-image"></div>
     <div class="main-container">
+        
         <div class="side-nav">
-            <button class="nav-button active" data-section="home">Home</button>
+            <button class="nav-button active" data-section="about">About</button>
+            <button class="nav-button" data-section="publications">Publications</button>
             <button class="nav-button" data-section="research">Research</button>
-            <button class="nav-button" data-section="experiences">Experiences</button>
-            <button class="nav-button" data-section="academics">Academics</button>
-            <button class="nav-button" data-section="resources">Resources</button>
+            <button class="nav-button" data-section="presentations">Presentations</button>
+            <button class="nav-button" data-section="experience">Experiences</button>
         </div>
         
         <div class="content-area">
-            <section id="home" class="content-section active">
-                <h1 style="display:flex; align-items:center; gap:5px;">
+            
+            <section id="about" class="content-section active">
+                <h1 style="display:flex; align-items:center;">
                     Yunjae Kim
-                <a href="https://orcid.org/0009-0005-2032-2394" target="_blank">
-                    <img src="https://prpgem.unespar.edu.br/imagens/logo-orcid.png/@@images/image.png"alt="ORCID iD"style="height:25px;">
-                </a>
+                    <span class="social-icons">
+                        <a href="https://orcid.org/0009-0005-2032-2394" target="_blank" style="border:none;">
+                            <img src="https://prpgem.unespar.edu.br/imagens/logo-orcid.png/@@images/image.png" alt="ORCID iD">
+                        </a>
+                        <a href="https://www.linkedin.com/in/yunjae-kim-881473371/" target="_blank" style="border:none;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" alt="LinkedIn">
+                        </a>
+                    </span>
                 </h1>
-                <p class="title">11th Grade Student | North Vancouver, BC, Canada</p>
+                <p class="status"> High School Student Researcher | North Vancouver, BC</p>
                 
-                <p>I'm an aspiring student aiming to pursue experimental condensed matter physics. I'm interested in how lattice and electronic structure give rise to emergent thermal properties and transport phenomena in solid-state systems and their applications to materials science and engineering. I'm also interested in the physical principles behind the molecular structure and group theory, and how it influences material properties.</p>
+                <p>I am interested in how lattice and electronic structure give rise to emergent thermal properties and transport phenomena in solid-state systems and their applications to materials science and engineering. I have conducted research in predicting high-temperature material properties using theoretical tools, experimentally analyzing cryogenic MOSFET behaviors, and designing novel dye molecules and analyzing them using DFT.</p>
                 
-                <p>I'm currently a student at St. Thomas Aquinas Regional Secondary School, where I'm taking various science and mathematics courses, leading various clubs, and a first-bass soloist in the choir. I'm also involved in research projects, competitions, and volunteer initiatives in my community.</p>
-                
-                <p>Outside of physics, I'm interested in Thomistic philosophy and theology, especially questions concerning human nature and metaphysics, as well as the mystery of the Trinity, specifically how divine simplicity is preserved within the Person of the Son in the Hypostatic Union.</p>
+                <a href="Yunjae_Kim_CV.pdf" target="_blank" class="btn-cv">Download CV (PDF)</a>
 
-                <div class="latest-update">
-                    <h4>Latest Update</h4>
-                    <div class="update-date">Apr 17, 2026</div>
-                    <p>
-                        Accepted and committing to UChicago's 3 week summer program for molecular engineering!
-                    </p>
+                <div class="list-item-block">
+                    <h3>Education</h3>
+                    <p><strong>St. Thomas Aquinas Regional Secondary School</strong><br>
+                    Dogwood Diploma | Sep 2022 - Present</p>
                 </div>
-                
-                <div class="contact-links">
-                    Email: <a href="mailto:yunjaekim2009@gmail.com"> yunjaekim2009@gmail.com</a>
+
+                <div style="margin-top: 35px; font-size: 14px;">
+                    Email: <a href="mailto:yunjaekim2009@gmail.com">yunjaekim2009@gmail.com</a>
                 </div>
             </section>
+            
             <section id="research" class="content-section">
-                <h1>Research & Projects</h1>
-                <p class="title">Current and past projects</p>
-                
-                <div class="research-item">
-                    <h3>Thermal Stability Analysis of MOSFETs at Cryogenic Temperatures</h3>
-                    <div class="research-date">Nov 2025- Present</div>
-                    <p> Analysing of temperature dependence in metal-oxide-semiconductor field-effect transistor (MOSFET) performance. When cooled below 298 K, the threshold voltage \(V_{th}\) increases due to Fermi level shift, while carrier mobility \(\mu\) improves from reduced phonon scattering. This creates a zero temperature coefficient (ZTC) bias point where the effects cancel, allowing thermally stable operation without external compensation.</p>
-                    <p>Mentor: Su Huyn Lee — School of Energy, British Columbia Institute of Technology.</p>
-                </div>
-                
-                <div class="research-item">
-                    <h3>Effects of Anharmonicity on the Heat Capacity of Elemental Solids at High Temperatures</h3>
-                    <div class="research-date">Oct 2025 - Present</div>
-                    <p>In the study of crystals, many models account for only the harmonic behaviour of atoms in the lattice. A textbook example is the Debye model, which assumes atoms in the crystal only interact via a harmonic \(x^2\) potential. While this leads to correct low-temperature predictions, it fails at higher temperatures to predict correct material properties such as heat capacity. In this article, we investigated the effect of anharmonicity in the interatomic potential on the deviation of a material's heat capacity from the standard prediction. Moreover, we show that anharmonic effects can be used to quantitatively predict the high-temperature heat capacity of simple crystals using readily available material data. To obtain a correction, we modeled interatomic interactions with a Morse potential, which exhibits anharmonic behavior, and used this to relate the anharmonic coefficient to physical properties such as bond dissociation energy. Numerical analysis of several elemental solids showed strong agreement between predicted and fitted coefficients, indicating that anharmonic effects can be estimated directly from material parameters. This approach also demonstrates that the strength of anharmonic corrections is inversely proportional to bond dissociation energy, meaning weaker interatomic bonds lead to stronger deviations from harmonic behavior.</p>
-                    <p>Mentor: Daniel Stedman — Department of Physics and Astronomy, University of British Columbia.</p>
-                </div>
+                <h1 class="title">Research</h1>
 
-                <div class="research-item">
-                    <h3>Quantum LATTE</h3>
-                    <div class="research-date">Jan 2026 - Apr 2026</div>
-                    <p>A 2D molecular dynamics simulation in Python of argon atoms interacting via the Lennard-Jones potential, built to compute the phonon density of states from first principles. The simulation propagates 64 atoms using the Velocity Verlet algorithm under periodic boundary conditions, then extracts vibrational mode structure by Fourier transforming the velocity autocorrelation function (VACF), a classical application of the Green-Kubo relations.</p>
-                    <p>GitHub: <a href="https://github.com/yunjae-kim/Quantum-LATTE"  target="_blank" class="resource-link">github.com/yunjae-kim/Quantum-LATTE</a></p>
-                </div>
-
-                <div class="research-item">
-                    <h3>The Language of Symmetry: Group Theory and Its Applications to Physics</h3>
-                    <div class="research-date">Jun 2025</div>
-                    <p>This article provides an intuitive introduction to the role of symmetry in modern physics. We demonstrate how physical laws are dictated by geometric invariance. Using group theory, we define the algebraic properties of discrete and continuous transformation groups. Then, we apply Noether's theorem to connect the continuous symmetry of space-time to physical conservation laws. Moving to the subatomic scale, we show how local gauge symmetries mathematically necessitate forces, explaining the \(SU(3) \times SU(2) \times U(1)\) group of the Standard Model. Finally, we explore spontaneous symmetry breaking in con-densed matter systems.</p>
-                    <p>Accepted for publication on The Journal of Young Physicists</p>
-                </div>
-
-                <div class="research-item">
-                    <h3>Symmetric VSEPR Geometries from Energy Minimization on a Sphere</h3>
-                    <div class="research-date">Dec 2025 - Feb 2026</div>
-                    <p>The basic VSEPR molecular geometries are derived by treating electron domains as identical repelling charges constrained to a sphere. In order to minimize the total Coulombic repulsion under the constraint, Lagrange multipliers and the Gram matrix are used to show that the minimum-energy configurations for \(N=2,3,4\) are linear, trigonal planar, and tetrahedral.</p>
-                    <p>ChemRxiv: <a href="https://doi.org/10.26434/chemrxiv.15000129/v1"  target="_blank" class="resource-link">doi.org/10.26434/chemrxiv.15000129/v1</a></p>
-                    <p>Revised and resubmitted to the Chemical Educator</p>
-                </div>
-
-                <div class="research-item">
-                    <h3>Modelling the Behaviour of Ideal Gases</h3>
-                    <div class="research-date">Dec 2024 - Jan 2025</div>
-                    <p>Small simulation project using Unity and C# to model ideal gas behavior under varying thermodynamic conditions. Used the ideal gas law (\(PV=nRT\)) and the Maxwell-Boltzmann distribution to replicate the random motion of particles. Created a visualization system showing particle dynamics and relationships between state variables.</p>
-                        <div class="project-image">
-                            <img src="https://i.ibb.co/WNw5kvkc/image1-1.png" alt="Ideal Gas Simulation">
-                        </div>
-                    <p>Collaborator: Christian Marrington — St. Thomas Aquinas Regional Secondary School.</p>
-                </div>
-            </section>
-
-            <section id="experiences" class="content-section">
-                <h1>Extracurricular Activities</h1>
-                <p class="title">Roles, enrichment programs, and certifications</p>
-
-                <h2 class="subsection-title">Roles</h2>
-
-                <div class="research-item">
-                    <h3>Quantum Leaps Fellow</h3>
-                    <div class="experience-date">Nov 2025 - Present</div>
-                    <p><strong>Society for Canadian Women in Science and Technology</strong></p>
-                    <p>Quantum Leaps is a free initiative that connects high school students with experienced mentors to develop a STEM project. Mentored by Su Hyun Lee (BCIT); analyzing the temperature dependence in metal-oxide-semiconductor field-effect transistor (MOSFET) performance. Applied transport theory and phonon physics to predict cryogenic MOSFET behaviour and planned experimental procedures. Wrote a grant proposal to obtain funding to proceed with the project.</p>
-                </div>
-
-                <div class="research-item">
-                    <h3>Research Intern</h3>
-                    <div class="experience-date">Oct 2025 - Present</div>
-                    <p><strong>The University of British Columbia</strong></p>
-                    <p>Supervised by Daniel Stedman (PhD Student) with facilitation from Prof. Fei Zhou. Investigating lattice anharmonicity to predict high-temperature material properties. Modelled interatomic interactions using a Taylor expansion of a Morse potential and statistical mechanics to derive an expression for the anharmonic coefficient. Developed a Python nonlinear regression model using thermodynamic data to analyze how bond strength and electronic structure affects the anharmonic coefficient heat capacity deviations in crystalline solids.</p>
-                </div>
-
-                <div class="research-item">
-                    <h3>Founder & Chief Editor</h3>
-                    <div class="experience-date">Sep 2025 - Present</div>
-                    <p><strong>STA Journal of Student Research</strong></p>
-                    <p>Founded the first academic journal at St. Thomas Aquinas Regional Secondary School. Designed, coded, and deployed the official website using HTML/CSS/JavaScript. Established editorial structure, submission guidelines, and peer review processes to ensure academic rigor. Published 2 manuscripts for the first issue.</p>
-                </div>
-
-                <div class="research-item">
-                    <h3>Vice President</h3>
-                    <div class="experience-date">Sep 2025 - Present</div>
-                    <p><strong>STA Math Club</strong></p>
-                    <p>Collaborate with the presidents to manage club operations, focusing on advanced problem-solving. Led training sessions for 15 students to prepare them for the regional Math Challengers competition. Coordinate mock competitions to build performance confidence and analytical skills.</p>
-                </div>
-
-                <div class="research-item">
-                    <h3>Founder & President</h3>
-                    <div class="experience-date">Sep 2024 - Present</div>
-                    <p><strong>STA Computer Science Club</strong></p>
-                    <p>Founded and currently lead the first computer science club at the school. Develop curriculum focused on Java fundamentals, mentor students for the Canadian Computing Competition (CCC), and manage all club logistics including scheduling, membership, and project coordination. Taught 15 students in the club with 4 students participating in the CCC.</p>
-                </div>
-
-                <div class="research-item">
-                    <h3>Peer Tutoring</h3>
-                    <div class="experience-date">Sep 2024 - Present</div>
-                    <p><strong>Independatly at School</strong></p>
-                    <p>Providing peer tutoring to various students in the school, espcially in mathematics, physics, and chemistry. Alwaying aiming to provide a deep, conceptual understanding of the topics so that the student will be able to apply them in any classroom material.</p>
-                </div>
-
-                <div class="research-item">
-                    <h3>Teen Advisory Council Member</h3>
-                    <div class="experience-date">Jan 2023 - Present</div>
-                    <p><strong>North Vancouver City Library</strong></p>
-                    <p>Represent the teen demographic in library governance, advising on services and programming. Manage the annual teen zine publication process, coordinate library events including the Teen Summer Writing Contest, and served as Master of Ceremonies for the 2024 awards ceremony.</p>
-                </div>
-
-                <div class="research-item">
-                    <h3>Volunteer Cook and Server</h3>
-                    <div class="experience-date">Sep 2022 - Present</div>
-                    <p><strong>The Door Is Open Drop-In Ministry & Shelter Services</strong></p>
-                    <p>Help prepare and serve hundreds of nutritious meals while engaging in supportive conversations in a fast-paced shelter environment. Manage ingredient procurement and logistics for meal services at this downtown Vancouver drop-in ministry.</p>
-                </div>
-
-                <div class="research-item">
-                    <h3>Camp Volunt</h3>
-                    <div class="experience-date">Aug 2026 (Upcoming)</div>
-                    <p><strong>Simon Fraser University</strong></p>
-                    <p>Summer volunteer for the chemistry and engineering camp. Will introduce various chemical topics such as forensic science, states of matter, chemical kinetics and enzymatic activity. Will introduce various aspects of engineering, such as simple machines, force effects, product life cycle, and technical communications.</p>
-                </div>
-
-                <div class="research-item">
-                    <h3>Science Competition Team</h3>
-                    <div class="experience-date">Oct 2025 - Feb 2026</div>
-                    <p><strong>School Team</strong></p>
-                    <p>Served as physics captain for the school team participating in the Kwantlen Polytechnic University Science Challenge. Developed study materials and led preparatory sessions for team members. Was also a member of the school team for UBC Physics Olympics. Participated in preparatory sessions led by our teacher. Attended all in-person events, namely Fermi questions, Quizzics, and two labs. Notable placements include 5th place in Fermi questions within our division.</p>
-                </div>
-
-                <div class="research-item">
-                    <h3>Phenomenal Physics Summer Camp Teaching Assistant</h3>
-                    <div class="experience-date">Jul 2025</div>
-                    <p><strong>University of British Columbia</strong></p>
-                    <p>Assisted UBC undergraduate leaders in facilitating daily hands-on physics activities for young campers. Managed logistics, maintained safe learning environments, and supervised campers during science demonstrations, lunch, and recreational activities.</p>
-                </div>
-
-                <div class="research-item">
-                    <h3>Physics Judge</h3>
-                    <div class="experience-date">Jan 2025</div>
-                    <p><strong>Annual STA Science Fair</strong></p>
-                    <p>Selected by the Science Department to evaluate physics category projects based on experimental design, data analysis, and presentation clarity. Assessed and scored multiple student projects during formal interviews.</p>
-                </div>
-
-                <div class="research-item">
-                    <h3>Open House Volunteer</h3>
-                    <div class="experience-date">Dec 2024, Dec 2025</div>
-                    <p><strong>Annual STA Science Fair</strong></p>
-                    <p>Helped the science department perform demonstrations, explain the scientific concepts behind them, and talk about the programs offered at the school.</p>
-                </div>
-
-                <h2 class="subsection-title">Enrichment Programs</h2>
-
-                <div class="research-item">
-                    <h3>Quantum School for Young Students</h3>
-                    <div class="experience-date">Aug 2026 (Upcoming)</div>
-                    <p><strong>Institute for Quantum Computing, University of Waterloo</strong></p>
-                    <p>Selected 1 of 200 nationally to attend the 2 week program, Quantum School for Young Students (QSYS), in August to learn quantum optics, cryptography, and computing.</p>
-                </div>
-
-                <div class="research-item">
-                    <h3>Pathways in Molecular Engineering</h3>
-                    <div class="experience-date">Jul 2026</div>
-                    <p><strong>The University of Chicago</strong></p>
-                    <p>Selected from a competitive pool of applicants to attend the rigorous pre-college program. Worked on fabrication, characterization and optimization of electronic transition and interfacial charge transport phenomena in organic dye-sensitized mesoporous nanocrystalline TiO2 solar cells experimentally and computationally (DFT)</p>
-                </div>
-
-                <div class="research-item">
-                    <h3>GoPhysics! Gravity & Black Holes Workshop</h3>
-                    <div class="experience-date">Jul 2026</div>
-                    <p><strong>Perimeter Institute for Theoretical Physics</strong></p>
-                    <p>Selected from a pool of applicants to attend the intensive GoPhysics! workshop.</p>
-                </div>
-
-                 <div class="research-item">
-                    <h3>CERN-Solvay Education Programme</h3>
-                    <div class="experience-date">May 2026</div>
-                    <p><strong>European Organization for Nuclear Research </strong></p>
-                    <p>Successfully participated in the online course of the CERN-Solvay Education Programme by completing at least three explainer videos and correctly answering dedicated quiz questions. Completed the <i>Symmetry, in theory</i>, <i>Keeping it cool</i>, and <i>It's just a phase</i> modules in order to learn more about topics relevant in condensed matter, including group theory of point groups, thermodynamics, and phase transitions.</p>
-                </div>
-
-                <h2 class="subsection-title">Certifications</h2>
-
-                <div class="research-item">
-                    <h3>Basics of Quantum Information</h3>
-                    <div class="experience-date">Jun 2026</div>
-                    <p><strong>IBM</strong></p>
-                    <p>Mastered the rigorous linear algebra and mathematical formalisms governing single and multiple quantum systems, including circuit-based computation models. Analyzed quantum entanglement through deep dives into quantum teleportation, superdense coding, and the CHSH inequality.</p>
-                </div>
-
-                <div class="research-item">
-                    <h3>Introduction to Multivariable Calculus (Level 1 Certificate)</h3>
-                    <div class="experience-date">May 2026</div>
-                    <p><strong>Wolfram U</strong></p>
-                    <p>Successfully completed a course in multivariable calculus through Wolfram U, mastering core concepts of multivariable functions and vector analysis.</p>
-                </div>
-
-                <div class="research-item">
-                    <h3>An Introduction To the Summa Theologiae (Aquinas 101)</h3>
-                    <div class="experience-date">May 2026</div>
-                    <p><strong>Thomistic Institute</strong></p>
-                    <p>Explored classical Aristotelian & Thomistic philosophy and theology through lessons and reading various parts of the Summa Theologiae and completed the following squences of courses as part of the Aquinas 101 program and recieved certificates of completion:</p>
-                    <ul class="course-list-items">
-                        <li>Introduction to St. Thomas Aquinas</li>
-                        <li>How to Think Like a Thomist: An Introduction to Thomistic Principles</li>
-                        <li>Who is God? How Can We Know Him?</li>
-                        <li>Creation, Providence, and Evil</li>
-                        <li>Angels, Demons, and Man</li>
-                        <li>Happiness and Human Action</li>
-                        <li>Virtue: the Path to Happiness</li>
+                <div class="list-item-block">
+                    <h3>Student Researcher</h3>
+                    <div class="meta-info">The University of British Columbia (Zhou Group) | Oct 2025 - Present</div>
+                    <ul class="bullet-list">
+                        <li>Investigating lattice anharmonicity and its relationship to potential wells to predict high-temperature material properties.</li>
+                        <li>Modeled interatomic interactions using a Morse potential to derive an analytical expression for the anharmonic correction to heat capacity.</li>
+                        <li>Developed a Python nonlinear regression model using thermodynamic data to analyze how bond strength affects heat capacity deviations in crystalline solids.</li>
                     </ul>
                 </div>
 
-                <div class="research-item">
-                    <h3>Python for Data Science, AI & Development</h3>
-                    <div class="experience-date">Dec 2025</div>
-                    <p><strong>IBM</strong></p>
-                    <p>Mastered Python fundamentals and data libraries like Pandas and NumPy to perform data analysis, web scraping, and API integrations.</p>
+                <div class="list-item-block">
+                    <h3>Quantum Leaps Fellow</h3>
+                    <div class="meta-info">British Columbia Institute of Technology | Nov 2025 - Present</div>
+                    <ul class="bullet-list">
+                        <li>Analyzing the temperature dependence in metal-oxide-semiconductor field-effect transistor (MOSFET) performance at cryogenic temperatures.</li>
+                        <li>Applying transport theory and phonon physics to predict cryogenic MOSFET behavior and planning experimental procedures.</li>
+                        <li>Awarded $1000 in grants for the project by the Society for Canadian Women in Science and Technology.</li>
+                    </ul>
                 </div>
 
-                <div class="research-item">
-                    <h3>Emergency Medical Responder</h3>
-                    <div class="experience-date">Jun 2025 - Aug 2025</div>
-                    <p><strong>Saint John Ambulance</strong></p>
-                    <p>Completed intensive Emergency Medical Responder (EMR) training covering advanced pre-hospital emergency care, including patient assessment, vital sign monitoring, hemorrhage control, spinal motion restriction, oxygen therapy, and medication administration.</p>
+                <div class="list-item-block">
+                    <h3>Summer Research Student</h3>
+                    <div class="meta-info">Pritzker School of Molecular Engineering, University of Chicago | Jul 2026</div>
+                    <ul class="bullet-list">
+                        <li>Fabricated, characterized, and optimized electronic transition and interfacial charge transport phenomena in dye-sensitized nanocrystalline TiO2 solar cells.</li>
+                        <li>Developed a novel modification of Coumarin 6 dye with a selenophene-conjugating group and cyano/phosphonic acid electron-accepting groups, performing computational analysis using time-dependent DFT.</li>
+                    </ul>
                 </div>
-
-                <div class="research-item">
-                    <h3>First Aid & CPR/AED level C</h3>
-                    <div class="experience-date">Jun 2025</div>
-                    <p><strong>Canadian Red Cross</strong></p>
-                    <p>Completed training covering immediate life-saving techniques, choking procedures, and emergency response for adults, children, and infants.</p>
-                </div>
-
             </section>
 
-            <section id="academics" class="content-section">
-                <h1>Academics</h1>
-                <p class="title">Coursework and exams</p>
-                <div class="research-item">
-                    <h3>Current School Coursework</h3>
-                    <p><strong>GPA: 4.0/4.0</strong></p>
-                    <p>AP Calculus AB 12<br>
-                        Physics 12 <br>
-                        Chemistry 12 <br>
-                        Anatomy and Physiology 12 <br>
-                        Enriched English First Peoples 11 <br>
-                        French 11 <br>
-                        Religion 11
-                    </p>
-                </div>
-
-                <div class="research-item">
-                    <h3>Standardized Testing</h3>
-                    <p><strong>SAT:</strong> 1550 (Reading & Writing: 750, Math: 800)</p>
-                </div>
-
-                <div class="research-item">
-                    <h3>Advanced Placement (AP)</h3>
-
-                    <table class="academics-table">
-                        <tr>
-                            <th>Course</th>
-                            <th>Year</th>
-                            <th>Grade</th>
-                            <th>Score</th>
-                        </tr>
-                        <tr>
-                            <td>AP Computer Science</td>
-                            <td>2024</td>
-                            <td>9</td>
-                            <td>4</td>
-                        </tr>
-                        <tr>
-                            <td>AP World History: Modern</td>
-                            <td>2024</td>
-                            <td>9</td>
-                            <td>4</td>
-                        </tr>
-                        <tr>
-                            <td>AP Physics 1: Algebra-Based</td>
-                            <td>2025</td>
-                            <td>10</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>AP Statistics</td>
-                            <td>2025</td>
-                            <td>10</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>AP Psychology</td>
-                            <td>2025</td>
-                            <td>10</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>AP Calculus BC</td>
-                            <td>2026</td>
-                            <td>11</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>AP Physics C: Mechanics</td>
-                            <td>2026</td>
-                            <td>11</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>AP Physics C: Electricity and Magnetism</td>
-                            <td>2026</td>
-                            <td>11</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>AP Physics 2: Algebra Based</td>
-                            <td>2026</td>
-                            <td>11</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>AP Chemistry</td>
-                            <td>2026</td>
-                            <td>11</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>AP English Language and Composition</td>
-                            <td>2026</td>
-                            <td>11</td>
-                            <td>5</td>
-                        </tr>
-                    </table>
-                </div>
-        </section>
-
-
-            <section id="resources" class="content-section">
-                <h1>Study Resources</h1>
-                <p class="title">Materials I have used for self-study, highly recommend</p>
+            <section id="publications" class="content-section">
+                <h1 class="title">Publications</h1>
                 
-                <div class="resource-category">
-                    <h3>Mathematics</h3>
-                    
-                    <div class="resource-list">
-                        <div class="resource-title">Calculus I-III (AP Calculus AB/BC corresponds to I/II)</div>
-                        
-                        
-                        <div class="resource-item">
-                            <strong>Textbook:</strong> James Stewart, <em>Calculus: Early Transcendentals</em>
-                        </div>
+                <div class="list-item-block">
+                    <p><strong>Y. Kim</strong>, "Analytically Derived Symmetric VSEPR Geometries from Classical Energy Minimization on a Sphere," <em>Chem. Educator</em> (2026) 31(1): 3082738, <a href="https://doi.org/10.1525/tce.2026.3082738" target="_blank">doi.org/10.1525/tce.2026.3082738</a>.</p>
 
-                        <div class="resource-item">
-                            <strong>Lectures:</strong> 
-                            <a href="https://www.youtube.com/playlist?list=PLF797E961509B4EB5" 
-                            target="_blank" class="resource-link">Professor Leonard</a>
-                        </div>
-                        
-                        <div class="resource-item">
-                            <strong>Supplementary:</strong> 
-                            <a href="https://tutorial.math.lamar.edu/" 
-                            target="_blank" class="resource-link">Paul's Online Math Notes</a>
-                        </div>
-                    </div>
-
-                    <div class="resource-list">
-                        <div class="resource-title">Probability and Statistics (AP Statistics)</div>
-                        
-                        <div class="resource-item">
-                            <strong>Textbook:</strong> David Diez <i>et al</i>, <em>OpenIntro Statistics</em>
-                        </div>
-
-                        <div class="resource-item">
-                            <strong>Lectures:</strong> 
-                            <a href="https://www.youtube.com/playlist?list=PL5102DFDC6790F3D0" 
-                            target="_blank" class="resource-link">Professor Leonard</a>
-                        </div>
-                        
-                    </div>
-                    
-                    <div class="resource-list">
-                        <div class="resource-title">Linear Algebra</div>
-
-                        <div class="resource-item">
-                            <strong>Textbook:</strong> Howard Anton, <em>Elementary Linear Algebra</em>
-                        </div>
-                        
-                        <div class="resource-item">
-                            <strong>Lectures:</strong> 
-                            <a href="https://www.youtube.com/playlist?list=PL6AU1UrGh9PUHmIeKdDFro9WCE2ktR2h-" 
-                            target="_blank" class="resource-link">Asher Roberts</a>
-                        </div>
-                        
-                    </div>
-                    
-                    <div class="resource-list">
-                        <div class="resource-title">Mathematics Beyond Linear Algebra (For Physical Sciences)</div>
-                        <p><em style="padding-bottom: 20px;">Differential Equations, Fourier Analysis, Complex Analysis, Calculus of Variations, etc.</em></p>
-                        
-                        <div class="resource-item">
-                            <strong>Textbook:</strong> Mary Boas, <em>Mathematical Methods in The Physical Sciences</em>
-                        </div>
-
-                        <div class="resource-item">
-                            <strong>Supplementary:</strong> Schaum's Outline for the topic you need extra practice in
-                        </div>
-                    </div>
-                    <div class="resource-list">
-                        <div class="resource-title">Abstract Algebra & Elementary Differential Geometry</div>
-                        
-                        <div class="resource-item">
-                            <strong>Textbook:</strong>Robert Taliaferro <em>Rational Mechanics</em>
-                        </div>
-                    </div>
-                    
-
+                    <p><strong>Y. Kim</strong>, "Fabrication and Characterization of an Anthocyanin-Sensitized TiO2 Solar Cell," <em>ChemRxiv</em> (2026). <a href="https://doi.org/10.26434/chemrxiv.15006409/v1" target="_blank">doi.org/10.26434/chemrxiv.15006409/v1</a></p>
+                    <p><strong>Y. Kim</strong>, "The Language of Symmetry: Group Theory and Its Applications to Physics," <em>J. Young Phys.</em> (2026). <a href="https://www.journalofyoungphysicists.org/post/the-language-of-symmetry-group-theory-and-its-applications-to-physics" target="_blank">View Article</a></p>
                 </div>
-    
-                <div class="resource-category">
-                    <h3>Physics</h3>
-                    
-                    <div class="resource-list">
-                        <div class="resource-title">Introductory Physics (AP Physics C)</div>
-                        
-                        <div class="resource-item">
-                            <strong>Textbook:</strong> Young & Freedman, <em>University Physics with Modern Physics</em>
-                        </div>
-                        
-                        <div class="resource-item">
-                            <strong>Lectures:</strong> 
-                            <a href="https://oyc.yale.edu/physics/phys-200" 
-                            target="_blank" class="resource-link">Yale Open Course</a>
-                        </div>
-                    </div>
-
-                    <div class="resource-list">
-                        <div class="resource-title">Classical Mechanics (Newtonian)</div>
-                        
-                        <div class="resource-item">
-                            <strong>Textbook:</strong> Kleppner & Kolenkow, <em>An Introduction to Mechanics</em>
-                        </div>
-                    </div>
-
-                    <div class="resource-list">
-                        <div class="resource-title">Analytical Mechanics</div>
-                        
-                        <div class="resource-item">
-                            <strong>Textbook:</strong> John Taylor, <em>Classical Mechanics</em>
-                        </div>
-                    </div>
-
-                    <div class="resource-list">
-                        <div class="resource-title">Intermediate Electrodynamics</div>
-                        
-                        <div class="resource-item">
-                            <strong>Textbook:</strong> David Griffiths, <em>Introduction to Electrodynamics</em>
-                        </div>
-                    </div>
-                    
-                    <div class="resource-list">
-                        <div class="resource-title">Thermodynamics & Statistical Mechanics</div>
-                        
-                        <div class="resource-item">
-                            <strong>Textbook:</strong> Daniel Schroeder, <em>An Introduction to Thermal Physics</em>
-                        </div>
-                    </div>
-                    <div class="resource-list">
-                        <div class="resource-title">Quantum Mechanics</div>
-                        
-                        <div class="resource-item">
-                            <strong>Textbook:</strong>John Townsend, <em>A Modern Approach to Quantum Mechanics</em>
-                        </div>
-                    </div>
-
-                    <div class="resource-list">
-                        <div class="resource-title">Solid State Physics</div>
-                        
-                        <div class="resource-item">
-                            <strong>Textbook:</strong> Steven Simon, <em>The Oxford Solid State Basics</em>
-                        </div>
-
-                        <div class="resource-item">
-                            <strong>Lectures:</strong> 
-                            <a href="https://www.youtube.com/playlist?list=PLaNkJORnlhZnC6E3z1-i7WERkferhQDzq" 
-                            target="_blank" class="resource-link">Steven Simon</a>
-                        </div>
-                    </div>
-
-                    
-                </div>
-
-
-                
-                <div class="resource-category">
-                    <h3>Chemistry</h3>
-                <div class="resource-list">
-                        <div class="resource-title">General Chemistry (AP Chemistry)</div>
-                        
-                        <div class="resource-item">
-                            <strong>Textbook:</strong> Theodore Brown <i>et al</i>, <em>Chemistry: The Central Science</em>
-                        </div>
-                        
-                        <div class="resource-item">
-                            <strong>Lectures:</strong> 
-                            <a href="https://www.youtube.com/playlist?list=PL8I5RNSPIfaaHDgCcK7BE5qt2MGNWDts-" 
-                            target="_blank" class="resource-link">Webster Science</a>
-                        </div>
-
-                </div>
-                
-                <div class="resource-list">
-                        <div class="resource-title">Physical Chemistry (Chemical Thermodynamics)</div>
-
-                        <div class="resource-item">
-                            <strong>Lectures:</strong> 
-                            <a href="https://www.youtube.com/playlist?list=PLYHaXvNA5Jrf_z0xbYhlzv0leoGBXHhll" 
-                            target="_blank" class="resource-link">Professor Derricotte</a>
-                        </div>                        
-
-                </div>
-                </div>
-
-                <div class="resource-category">
-                    <h3>Materials Science</h3>
-                    <div class="resource-list">
-                    <div class="resource-title">Introductory Materials Science</div>
-                        
-                    <div class="resource-item">
-                        <strong>Textbook:</strong> Callister & Rethwisch, <em>Materials Science and Engineering: An Introduction</em>
-                    </div>
-                    </div>
-
-                </div>
-                
             </section>
+            
+            <section id="presentations" class="content-section">
+                <h1 class="title">Presentations</h1>
+
+                <div class="list-item-block">
+                    <p><strong>Y. Kim.</strong> "DFT Study of [2-cyano-2-[5-[7-(diethylamino)-2-oxo-chromen-3-yl]selenophen2-yl]ethenyl] phosphonic acid (DEAC-Se-P) as a Novel Coumarin 6 Derivative." Oral Presentation at the <em>Pathways in Molecular Engineering Symposium</em>, Chicago, US, 23 Jul 2026.</p>
+                    
+                    <div style="margin-top: 25px;">
+                        <!-- Replace 'poster.png' with the actual filename of your poster -->
+                        <img src="PPME_Poster.png" alt="Symposium Poster" style="width: 100%; border: 1px solid var(--border-color); border-radius: 6px; box-shadow: 0 5px 20px rgba(0,0,0,0.4);">
+                    </div>
+                </div>
+            </section>
+
+            <!-- EXPERIENCE SECTION -->
+            <section id="experience" class="content-section">
+                <h1 class="title">Experiences</h1>
+
+                <div class="list-item-block">
+                    <h3>GCI World</h3>
+                    <div class="meta-info">The University of Tokyo (Matsuo-Iwasawa Lab) | Sep 2026 - Present</div>
+                    <p>Selected to study the mathematical and computational foundations of data science with applications of machine learning.</p>
+                </div>
+            
+                <div class="list-item-block">
+                    <h3>Quantum School for Young Students</h3>
+                    <div class="meta-info">Institute for Quantum Computing, University of Waterloo | Jul 2026 - Aug 2026</div>
+                    <p>Selected 1 of 200 nationally to attend the QSYS program. Studied the mathematical formalism of quantum mechanics, quantum computing, algorithms, cryptography, and optics.</p>
+                </div>
+
+                <div class="list-item-block">
+                    <h3>GoPhysics! Gravity & Black Holes Workshop</h3>
+                    <div class="meta-info">Perimeter Institute for Theoretical Physics | Jul 2026</div>
+                    <p>Selected by the world-leading institute for theoretical physics to attend the intensive workshop studying Einstein's theory of general relativity, concepts of differential geometry, and black holes.</p>
+                </div>
+
+                <div class="list-item-block">
+                    <h3>CERN-Solvay Education Programme</h3>
+                    <div class="meta-info">European Organization for Nuclear Research (CERN) | May 2026</div>
+                    <p>Successfully completed online modules on group theory and the Standard Model, thermodynamics, and phase transitions.</p>
+                </div>
+
+
+            </section>
+            
         </div>
     </div>
 
-    
-
     <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2026 Yunjae Kim</p>
-        </div>
+        <p>&copy; 2026 Yunjae Kim. All rights reserved.</p>
     </footer>
     
     <script>
         document.querySelectorAll('.nav-button').forEach(button => {
             button.addEventListener('click', () => {
-                document.querySelectorAll('.nav-button').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                
-                document.querySelectorAll('.content-section').forEach(section => {
-                    section.classList.remove('active');
-                });
+                document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
                 
                 button.classList.add('active');
-                
                 const sectionId = button.getAttribute('data-section');
                 document.getElementById(sectionId).classList.add('active');
                 
                 window.history.pushState(null, '', `#${sectionId}`);
-
-                window.addEventListener('popstate', () => {
-                    const hash = window.location.hash.substring(1) || 'home';
-                    const button = document.querySelector(`[data-section="${hash}"]`);
-                    if (button) button.click();
-                });
             });
         });
 
         window.addEventListener('DOMContentLoaded', () => {
             const hash = window.location.hash.substring(1);
-            if (hash && ['home', 'research', 'experiences', 'academics', 'resources'].includes(hash)) {
+            if (hash && ['about', 'research', 'publications', 'presentations', 'experience'].includes(hash)) {
                 const button = document.querySelector(`[data-section="${hash}"]`);
                 if (button) button.click();
             }
