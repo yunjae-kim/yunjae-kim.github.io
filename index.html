@@ -262,6 +262,16 @@
         }
 
         @media (max-width: 992px) {
+
+            .header-image {
+                height: 120px;
+            }
+    
+            .main-container {
+                flex-direction: column;
+                transform: translateY(-40px);
+                margin: 0 15px;
+            }
             .main-container {
                 flex-direction: column;
                 transform: translateY(-40px);
@@ -288,8 +298,10 @@
             }
             
             .nav-button.active {
-                border-left: none;
-                border-bottom: 2px solid var(--text-heading);
+                background: transparent;
+                color: var(--text-heading);
+                font-weight: 600;
+                border-left: 4px solid var(--text-heading); 
             }
             
             .content-area {
