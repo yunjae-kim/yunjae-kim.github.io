@@ -452,7 +452,7 @@
         <p>&copy; 2026 Yunjae Kim. All rights reserved.</p>
     </footer>
     
-    <script>
+<script>
         document.querySelectorAll('.nav-button').forEach(button => {
             button.addEventListener('click', () => {
                 document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
@@ -462,7 +462,12 @@
                 const sectionId = button.getAttribute('data-section');
                 document.getElementById(sectionId).classList.add('active');
                 
-                window.history.pushState(null, '', `#${sectionId}`);
+                // Conditionally update the URL
+                if (sectionId === 'about') {
+                    window.history.pushState(null, '', window.location.pathname);
+                } else {
+                    window.history.pushState(null, '', `#${sectionId}`);
+                }
             });
         });
 
